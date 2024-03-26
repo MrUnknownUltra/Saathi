@@ -1,0 +1,82 @@
+/* Navbar.css */
+.home {
+    position: absolute;
+    top: 26px;
+    left: 874px;
+    text-decoration: none;
+    color: #25523b;
+    font-weight: 800;
+    
+}
+.saathihome{
+    color: #25523b;
+}
+.about {
+    position: absolute;
+    top: 25px;
+    left: 955px;
+    color: #25523b;
+    font-weight: 800;
+}
+.language {
+    position: absolute;
+    height: 10px;
+    font-weight: 800;
+    color: #25523b;
+}
+.vectorclass {
+    position: absolute;
+    height: 33.33%;
+
+    bottom: 85%;
+    left: 60px;
+}
+.language-parent {
+     /* Change absolute to relative */
+     display: inline-block;
+     position: absolute;
+     top: 45px;
+     left: 1167px;
+     width: 101px;
+     height: 18px;
+}
+
+.language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 175px;
+    width: 100px;
+    background-color: #ceded4;
+    z-index: 1;
+}
+.saathi {
+    position: absolute;
+    top: 21px;
+    left: 87px;
+    font-weight: 800;
+    font-size: 25px;
+    letter-spacing: 0.05em;
+
+}
+.logo {
+    position: absolute;
+    top: 7px;
+    left: 23px;
+    width: 52px;
+    height: 49px;
+    object-fit: cover;
+}
+.home-parent {
+    position: relative;
+    background-color: rgba(53, 136, 86, 0.2);
+    height: 70px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 15px;
+    color: #25523b;
+    font-family: Montserrat;
+    margin-left: 105px;
+    margin-top: 22px;
+    margin-right: 56px;
+}
