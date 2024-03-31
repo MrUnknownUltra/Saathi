@@ -74,9 +74,9 @@ const Speech= ({ initialMessage }) => {
   const handleSpokenCommand = (command) => {
     const commandMappings = {
       hydrochemical: 'hydrochemical-prediction',
-      soil: 'soil-prediction',
-      crop: 'crop-prediction',
-      weather: 'weather-prediction',
+      Mitti: 'soil-prediction',
+      fasal: 'crop-prediction',
+      Mausam: 'weather-prediction',
       about: 'aboutus',
       home:'home'
     };

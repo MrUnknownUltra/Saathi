@@ -56,7 +56,12 @@ function CropPredict() {
   const navigate = useNavigate();
   const recognitionRef = useRef(null);
 
- 
+  useEffect(() => {
+    if (selectedFile) {
+      // File has been selected, trigger prediction
+      handlePredictClick();
+    }
+  }, [selectedFile]);
   const speech = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'hi-IN';
@@ -129,26 +134,36 @@ function CropPredict() {
       browse: 'browse',
       result: 'predict'
     };
-  
-    const mappedRoute = commandMappings[command.toLowerCase()];
-    if(mappedRoute){
-      if (mappedRoute === 'browse') {
-        
-        document.querySelector('input[type="file"]').click();
-      } 
-      if (mappedRoute === 'predict') {
-        handlePredictClick();
-      } 
-    }
-      else {
-        navigate(`/${mappedRoute}`);
+    
+      const mappedRoute = commandMappings[command.toLowerCase()];
+      if(mappedRoute){
+        if (mappedRoute === 'browse') {
+          // Trigger click event on file input
+          const fileInput = document.querySelector('input[type="file"]');
+          if (fileInput) {
+            setSelectedFile(fileInput)
+            fileInput.click();
+          } else {
+            console.error("File input element not found.");
+          }
+        }
+         else if (mappedRoute === 'predict') {
+          handlePredictClick();
+        } 
+        else
+        {
+          navigate(`/${mappedRoute}`);
+        }
       }
-    } 
-  
+        else {
+          console.error("Invalid Input.");
+        }
+      } 
 
   const handleFileChange = event => {
     const file = event.target.files[0];
     setSelectedFile(file);
+    console.log(selectedFile)
     const reader = new FileReader();
     reader.onload = () => {
       setSelectedImage(reader.result); // Set the selected image data
@@ -182,15 +197,17 @@ function CropPredict() {
   
 
   const handlePredictClick = () => {
+    console.log(selectedFile)
     if (selectedFile) {
       setLoading(true); // Show loader when prediction starts
       const formData = new FormData();
       formData.append('file', selectedFile);
       axios.post('http://127.0.0.1:8000/cropimage', formData)
         .then(response => {
-          
             setLoading(false);
           // Hide loader when prediction is complete
+          console.log(response)
+          const innerJsonString = response.data.response.trim().slice(1, -1);
           const responseData = JSON.parse(response.data.response); // Parse the JSON string
           onPredictClickHandler(responseData)
           console.log(responseData.accuracy)

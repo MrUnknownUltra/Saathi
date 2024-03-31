@@ -11,8 +11,6 @@ const SARChart = ({ data }) => {
   const [showTable, setShowTable] = useState(false); 
   const [sarValues, setSarValues] = useState([]);
 
-  console.log(data);
-
   useEffect(() => {
     calculateSARValues(data);
   }, [data]);

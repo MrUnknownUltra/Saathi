@@ -25,7 +25,7 @@ function HydroPredict() {
   const [result,setResult]=useState(null);
   var   [fileData, setFileData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [values, setValues] = useState([{
+  const [values, setValues] = useState({
     ph: 7.5,
     Hardness: 150,
     Solids: 300,
@@ -39,7 +39,7 @@ function HydroPredict() {
     Magnesium: 233,
     Calcium: 33,
     
-  }]);
+  });
   useEffect(() => {
     console.log("File Data Updated:", fileData);
   }, [fileData]);
@@ -167,51 +167,51 @@ const title=t('Water Potability Index')
       return [
         {
           parameter: t('pH'),
-          value: <input type="number" name="ph" value={values[0].ph} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="ph" value={values.ph} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Hardness'),
-          value: <input type="number" name="Hardness" value={values[0].Hardness} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Hardness" value={values.Hardness} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Solids'),
-          value: <input type="number" name="Solids" value={values[0].Solids} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Solids" value={values.Solids} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Chloramines'),
-          value: <input type="number" name="Chloramines" value={values[0].Chloramines} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Chloramines" value={values.Chloramines} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Sulfate'),
-          value: <input type="number" name="Sulfate" value={values[0].Sulfate} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Sulfate" value={values.Sulfate} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Conductivity'),
-          value: <input type="number" name="Conductivity" value={values[0].Conductivity} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Conductivity" value={values.Conductivity} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Organic_carbon'),
-          value: <input type="number" name="Organic_carbon" value={values[0].Organic_carbon} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Organic_carbon" value={values.Organic_carbon} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Trihalomethanes'),
-          value: <input type="number" name="Trihalomethanes" value={values[0].Trihalomethanes} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Trihalomethanes" value={values.Trihalomethanes} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Turbidity'),
-          value: <input type="number" name="Turbidity" value={values[0].Turbidity} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Turbidity" value={values.Turbidity} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Sodium'),
-          value: <input type="number" name="Sodium" value={values[0].Sodium} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Sodium" value={values.Sodium} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Magnesium'),
-          value: <input type="number" name="Magnesium" value={values[0].Magnesium} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Magnesium" value={values.Magnesium} onChange={handleInputChange} step="0.01"/>,
         },
         {
           parameter: t('Calcium'),
-          value: <input type="number" name="Calcium" value={values[0].Calcium} onChange={handleInputChange} step="0.01"/>,
+          value: <input type="number" name="Calcium" value={values.Calcium} onChange={handleInputChange} step="0.01"/>,
         },
       ];
     }
@@ -386,6 +386,12 @@ const downloadSampleExcel = () => {
               }}
             >
               <Pie values={fileData }/>
+              <p>Values:</p>
+              <ul>
+                {Object.entries(values).map(([key, value]) => (
+                  <li key={key}>{key}: {value}</li>
+                ))}
+              </ul>
           <SARChart data={fileData}/>
             </div>
           </div>
