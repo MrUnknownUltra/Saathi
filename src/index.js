@@ -12,6 +12,7 @@ import enTranslation from './Lang/en.json';
 import hiTranslation from './Lang/hi.json';
 import punTranslation from './Lang/pun.json';
 import bhojTranslation from './Lang/bhoj.json';
+import dogriTranslation from './Lang/dogri.json';
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -31,6 +32,9 @@ i18n
       },
       bundeli:{
         translation: bundeliTranslation
+      },
+      dogri:{
+        translation: dogriTranslation
       }
       // Add more languages as needed
     },
