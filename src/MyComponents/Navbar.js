@@ -39,9 +39,9 @@ const Navbar = () => {
     { code: 'pun', name: 'ਪੰਜਾਬੀ' },
     { code: 'bhoj', name: 'भोजपूरी' },
     { code: 'bundeli', name: 'बुन्देली ' },
+    { code: 'dogri', name: 'डोगरी' },
     { code: 'kan', name: 'Kannad' },
-    { code: 'ben', name: 'Bengali' },
-    { code: 'dogr', name: 'Dogri' },
+    { code: 'ben', name: 'Bengali' }
     // Add more languages as needed
   ]; // Language options
 
